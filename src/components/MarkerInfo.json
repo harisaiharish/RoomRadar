@@ -1,0 +1,13 @@
+[
+    {
+      "id": 1,
+      "title": "Fatty",
+      "lat": 40.42813,
+      "lng": -86.9212,
+      "imgsrc": "put path lil bro",
+      "description": "cringe lame weird",
+      "bookingLink": "https://example.com/yay",
+      "warning": null,
+      "mapsLink": "gmaps/yay"
+    }
+]
