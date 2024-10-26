@@ -1,0 +1,41 @@
+/* src/styles/primarySidebar.css */
+
+.primary-sidebar {
+    position: absolute;
+    top: 0;
+    right: 0; /* Changed from left to right */
+    width: 300px;
+    height: 100%;
+    background-color: #f5f5f5;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Shadow adjusted for right side */
+}
+
+.primary-sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.primary-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.primary-sidebar li {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.primary-sidebar li:hover {
+    background-color: #ddd;
+}
+
+.primary-sidebar .highlighted {
+    background-color: #d1e7dd; /* Light green for highlighted spot */
+    font-weight: bold;
+}

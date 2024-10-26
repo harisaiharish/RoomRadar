@@ -1,20 +1,31 @@
 // src/App.js
 import React, { useState } from 'react';
 import MapComponent from './components/MapComponent';
+import SidebarContainer from './components/SidebarContainer';
+import spots from './components/MarkerInfo.json'; // Sample data file with spot information
+import './styles/primarySidebar.css';
+import './styles/detailedSidebar.css';
 
 function App() {
-    const [showMap, setShowMap] = useState(false);
+    const [highlightedSpotId, setHighlightedSpotId] = useState(null);
+
+    const handleSelectSpot = (spotId) => {
+        setHighlightedSpotId(spotId); // Highlight the selected spot marker
+    };
+
+    const handleCloseDetailView = () => {
+        setHighlightedSpotId(null); // Reset highlighting when closing detail view
+    };
 
     return (
-        <div className="App" style={{ textAlign: 'center', paddingTop: '20px' }}>
-            <h1>Welcome to RoomRadar</h1>
-            <p>If you see this message, the app is loading correctly.</p>
-
-            <button onClick={() => setShowMap(!showMap)}>
-                {showMap ? 'Hide Map' : 'Show Map'}
-            </button>
-
-            {showMap && <MapComponent />}
+        <div className="App">
+            <MapComponent highlightedSpotId={highlightedSpotId} />
+            <SidebarContainer
+                spots={spots}
+                onSelectSpot={handleSelectSpot}
+                highlightedSpotId={highlightedSpotId}
+                onCloseDetailView={handleCloseDetailView}
+            />
         </div>
     );
 }

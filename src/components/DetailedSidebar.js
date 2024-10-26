@@ -1,12 +1,11 @@
-// src/components/Sidebar.js
+// src/components/DetailedSidebar.js
 import React from 'react';
-import '../styles/sidebar.css';
+import '../styles/detailedSidebar.css';
 
-const Sidebar = ({ spot }) => {
-    if (!spot) return null;  // Only display if a spot is selected
-
+const DetailedSidebar = ({ spot, onClose }) => {
     return (
-        <div className="sidebar">
+        <div className="detailed-sidebar">
+            <button className="back-button" onClick={onClose}>← Back</button>
             <h2>{spot.title}</h2>
             <p>{spot.description}</p>
             {spot.bookingLink ? (
@@ -14,10 +13,10 @@ const Sidebar = ({ spot }) => {
                     Book Now
                 </a>
             ) : (
-                <p style={{ color: 'yellow' }}>{spot.warning}</p>
+                <p className="warning">{spot.warning}</p>
             )}
         </div>
     );
 };
 
-export default Sidebar;
+export default DetailedSidebar;
