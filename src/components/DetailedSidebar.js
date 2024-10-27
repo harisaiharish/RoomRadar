@@ -50,7 +50,7 @@ const DetailedSidebar = ({ spot, onClose }) => {
 					rel="noopener noreferrer"
 					className="map-button"
 				>
-					View on Map
+					Start Journey
 				</a>
 			)}
 		</div>
