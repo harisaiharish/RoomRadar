@@ -4,8 +4,8 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 340px;
-	height: 100%;
+	width: 20%;
+	height: 100vh;
 	background: linear-gradient(135deg, #f9f9f9, #e3e3e3);
 	padding: 24px;
 	overflow-y: auto;
