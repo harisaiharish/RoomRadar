@@ -16,6 +16,8 @@ const center = {
 const MapComponent = ({ highlightedSpotId, setHighlightedSpotId }) => {
 	const [userLocation, setUserLocation] = useState(null);
 	const [hoveredSpotId, setHoveredSpotId] = useState(null);
+	const [mapLoaded, setMapLoaded] = useState(false);
+	const [markersLoaded, setMarkersLoaded] = useState(false);
 
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(
@@ -30,18 +32,32 @@ const MapComponent = ({ highlightedSpotId, setHighlightedSpotId }) => {
 	}, []);
 
 	const handleMarkerClick = (spotId) => {
-		setHighlightedSpotId((prevId) => (prevId === spotId ? null : spotId)); // Sync with App.js
+		setHighlightedSpotId((prevId) => (prevId === spotId ? null : spotId));
+		{
+			/* Sync with App.js */
+		}
 	};
 
+	// Ensure markers are only added after both map and user location load
+	useEffect(() => {
+		if (mapLoaded) {
+			// Short delay to ensure the map is ready
+			const timer = setTimeout(() => setMarkersLoaded(true), 200);
+			return () => clearTimeout(timer);
+		}
+	}, [mapLoaded]);
+
 	return (
-		<>
-			<LoadScript googleMapsApiKey="AIzaSyBAM7E8FJwP5mvq5o5Pk2vWxzPQzm2BTb4">
-				<GoogleMap
-					mapContainerStyle={containerStyle}
-					center={userLocation || center}
-					zoom={15}
-				>
-					{spots.map((spot) => (
+		<LoadScript googleMapsApiKey="AIzaSyBAM7E8FJwP5mvq5o5Pk2vWxzPQzm2BTb4">
+			<GoogleMap
+				mapContainerStyle={containerStyle}
+				center={userLocation || center}
+				zoom={15}
+				onLoad={() => setMapLoaded(true)}
+			>
+				{/* Render markers only after both map and markers are ready */}
+				{markersLoaded &&
+					spots.map((spot) => (
 						<Marker
 							key={spot.id}
 							position={{ lat: spot.lat, lng: spot.lng }}
@@ -61,17 +77,17 @@ const MapComponent = ({ highlightedSpotId, setHighlightedSpotId }) => {
 						/>
 					))}
 
-					{userLocation && (
-						<Marker
-							position={userLocation}
-							icon={{
-								url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-							}}
-						/>
-					)}
-				</GoogleMap>
-			</LoadScript>
-		</>
+				{/* Render user location marker only if available and after markers load */}
+				{markersLoaded && userLocation && (
+					<Marker
+						position={userLocation}
+						icon={{
+							url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+						}}
+					/>
+				)}
+			</GoogleMap>
+		</LoadScript>
 	);
 };
 
