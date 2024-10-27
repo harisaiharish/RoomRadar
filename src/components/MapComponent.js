@@ -4,7 +4,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import spots from "./MarkerInfo.json";
 
 const containerStyle = {
-	width: "100%",
+	width: "77%",
 	height: "100vh",
 };
 
