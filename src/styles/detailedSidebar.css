@@ -5,7 +5,7 @@
 	top: 0;
 	right: 0;
 	width: 20%;
-	height: calc(100vh - 60px);
+	height: calc(100vh - 0px);
 	background: linear-gradient(135deg, #f9f9f9, #e3e3e3);
 	padding: 24px;
 	overflow-y: auto;
@@ -60,6 +60,11 @@
 /* Warning text styling */
 .detailed-sidebar .warning {
 	color: #d9534f;
+	font-weight: bold;
+}
+
+.detailed-sidebar .eta {
+	color: #000000;
 	font-weight: bold;
 }
 

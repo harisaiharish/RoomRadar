@@ -14,7 +14,8 @@
 		"hasScreen": true,
 		"hasWhiteBoard": true,
 		"capacity": 8,
-		"quality": 4.583018867924528
+		"quality": 4.583018867924528,
+		"time": 3
 	},
 	{
 		"id": 2,
@@ -31,7 +32,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": true,
 		"capacity": 8,
-		"quality": 4.647368421052631
+		"quality": 4.647368421052631,
+		"time": 2
 	},
 	{
 		"id": 3,
@@ -48,7 +50,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": true,
 		"capacity": 5,
-		"quality": 4.257142857142857
+		"quality": 4.257142857142857,
+		"time": 11
 	},
 	{
 		"id": 4,
@@ -65,7 +68,8 @@
 		"hasScreen": true,
 		"hasWhiteBoard": false,
 		"capacity": 21,
-		"quality": 4.257142857142857
+		"quality": 4.257142857142857,
+		"time": 9
 	},
 	{
 		"id": 5,
@@ -82,7 +86,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.642028985507246
+		"quality": 4.642028985507246,
+		"time": 4
 	},
 	{
 		"id": 6,
@@ -90,7 +95,7 @@
 		"lat": 40.42613383861793,
 		"lng": -86.9158781481944,
 		"imgsrc": "img/TODO.jpeg",
-		"description": "The Math Library provides collections and services related to Mathematics, Computer Science, and Statistics with space for students and faculty to study, perform research, and collaborate.",
+		"description": "The Math Library provides collections and services related to Mathematics, with space for students and faculty to study, perform research, and collaborate.",
 		"bookingLink": null,
 		"warning": null,
 		"mapsLink": "https://maps.app.goo.gl/geaEnLmTQwBBdTqZ9",
@@ -99,7 +104,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.26
+		"quality": 4.26,
+		"time": 1
 	},
 	{
 		"id": 7,
@@ -107,7 +113,7 @@
 		"lat": 40.42749787835437,
 		"lng": -86.91950614728455,
 		"imgsrc": "img/BCC.jpeg",
-		"description": "An ideal place for individual and group research, the BCC Library also holds a special collection of books by and about people of color as well as our own archives in addition to our main collection of books, journals, and media.",
+		"description": "An ideal place for individual and group research, the library also holds a special collection of books by and about people of color as well as our own archives in addition to our main collection of books, journals, and media.",
 		"bookingLink": null,
 		"warning": "Small",
 		"mapsLink": "https://maps.app.goo.gl/6naPDJbdwsWwwoat9",
@@ -116,7 +122,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.706382978723405
+		"quality": 4.706382978723405,
+		"time": 7
 	},
 	{
 		"id": 8,
@@ -133,7 +140,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 3.7600000000000002
+		"quality": 3.7600000000000002,
+		"time": 31
 	},
 	{
 		"id": 9,
@@ -150,7 +158,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.7828124999999995
+		"quality": 4.7828124999999995,
+		"time": 9
 	},
 	{
 		"id": 10,
@@ -167,7 +176,8 @@
 		"hasScreen": false,
 		"hasWhiteBoard": true,
 		"capacity": -1,
-		"quality": 4.551851851851852
+		"quality": 4.551851851851852,
+		"time": 4
 	},
 	{
 		"id": 11,
@@ -184,7 +194,8 @@
 		"hasScreen": true,
 		"hasWhiteBoard": true,
 		"capacity": -1,
-		"quality": 4.1
+		"quality": 4.1,
+		"time": 6
 	},
 	{
 		"id": 12,
@@ -201,7 +212,8 @@
 		"hasScreen": true,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.0813953488372094
+		"quality": 4.0813953488372094,
+		"time": 17
 	},
 	{
 		"id": 13,
@@ -218,7 +230,8 @@
 		"hasScreen": true,
 		"hasWhiteBoard": true,
 		"capacity": -1,
-		"quality": 4.2749999999999995
+		"quality": 4.2749999999999995,
+		"time": 13
 	},
 	{
 		"id": 14,
@@ -235,7 +248,8 @@
 		"hasScreen": true,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.170149253731344
+		"quality": 4.170149253731344,
+		"time": 14
 	},
 	{
 		"id": 15,
@@ -252,6 +266,7 @@
 		"hasScreen": false,
 		"hasWhiteBoard": false,
 		"capacity": -1,
-		"quality": 4.568421052631579
+		"quality": 4.568421052631579,
+		"time": 11
 	}
 ]

@@ -45,6 +45,7 @@ const DetailedSidebar = ({ spot, onClose }) => {
 				<p className="warning">{spot.warning}</p>
 			)}
 			{/* New button to Google Maps - displays regardless of booking link */}
+			{/*GPT input a "ETA = {spot.time} mins" here" */}
 			{userLocation && (
 				<a
 					href={googleMapsUrl}
@@ -55,6 +56,7 @@ const DetailedSidebar = ({ spot, onClose }) => {
 					Start Journey
 				</a>
 			)}
+			<p classname="eta">{spot.time && <p classname="eta">ETA: {spot.time} mins</p>}</p>
 		</div>
 	);
 };
