@@ -5,7 +5,7 @@ import spots from "./MarkerInfo.json";
 
 const containerStyle = {
 	width: "77%",
-	height: "100vh",
+	height: "calc(100vh - 15px)",
 };
 
 const center = {
