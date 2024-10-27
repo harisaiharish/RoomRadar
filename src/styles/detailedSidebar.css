@@ -88,3 +88,29 @@
 .back-button {
 	transition: color 0.3s ease;
 }
+
+/* Container to align buttons horizontally */
+.button-container {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.detailed-sidebar .map-button {
+	display: inline-block;
+	padding: 10px 14px;
+	background-color: #28a745 !important; /* Ensure green background */
+	color: #fff !important;
+	text-decoration: none;
+	border-radius: 12px;
+	font-weight: 500;
+	transition: background-color 0.3s ease;
+	font-family: "Roboto", sans-serif;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.detailed-sidebar .map-button:hover {
+	background-color: #218838 !important; /* Darker green on hover */
+	transform: scale(1.03);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
