@@ -14,7 +14,7 @@ const PrimarySidebar = ({ spots, onSpotClick, highlightedSpotId }) => {
                         onClick={() => onSpotClick(spot)}
                     >
                         <h3>{spot.title}</h3>
-                        <p>{spot.shortDescription || 'A great study spot!'}</p>
+                        <p>{spot.description}</p>
                     </li>
                 ))}
             </ul>
