@@ -77,7 +77,7 @@ const MapComponent = ({ highlightedSpotId, setHighlightedSpotId }) => {
 						/>
 					))}
 
-				{/* Render user location marker only if available and after markers load */}
+				{/*Render user location marker only if available and after markers load*/}
 				{markersLoaded && userLocation && (
 					<Marker
 						position={userLocation}
