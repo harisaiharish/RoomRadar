@@ -57,6 +57,11 @@ const DetailedSidebar = ({ spot, onClose }) => {
 				</a>
 			)}
 			<p classname="eta">{spot.time && <p classname="eta">ETA: {spot.time} mins</p>}</p>
+			{spot.graph ? (
+				<img src={spot.graph} alt={spot.title} className="spot-graph" />
+			) : (
+				<p></p>
+			)}
 		</div>
 	);
 };

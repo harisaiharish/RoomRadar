@@ -15,7 +15,8 @@
 		"hasWhiteBoard": true,
 		"capacity": 8,
 		"quality": 4.583018867924528,
-		"time": 3
+		"time": 3,
+		"graph": "img/WALCgraph.jpg"
 	},
 	{
 		"id": 2,
