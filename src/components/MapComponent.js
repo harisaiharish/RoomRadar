@@ -1,26 +1,21 @@
 // src/components/MapComponent.js
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import spots from './MarkerInfo.json';
 
 const containerStyle = {
     width: '100%',
     height: '500px'
 };
 
-// Default center location
 const center = {
     lat: 40.42813,
     lng: -86.9212
 };
 
-// Hardcoded blue markers for testing
-const hardcodedSpots = [
-    { id: 1, lat: 40.428884, lng: -86.913258 },   // Location 1
-    { id: 2, lat: 40.427229, lng: -86.919500 }    // Location 2 (slightly different)
-];
-
-const MapComponent = () => {
+const MapComponent = ({ highlightedSpotId, setHighlightedSpotId }) => {
     const [userLocation, setUserLocation] = useState(null);
+    const [hoveredSpotId, setHoveredSpotId] = useState(null);
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -34,34 +29,45 @@ const MapComponent = () => {
         );
     }, []);
 
+    const handleMarkerClick = (spotId) => {
+        setHighlightedSpotId((prevId) => (prevId === spotId ? null : spotId)); // Sync with App.js
+    };
+
     return (
-        <LoadScript googleMapsApiKey="AIzaSyBAM7E8FJwP5mvq5o5Pk2vWxzPQzm2BTb4">
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={userLocation || center}
-                zoom={15}
-            >
-                {/* Hardcoded blue markers */}
-                {hardcodedSpots.map((spot) => (
-                    <Marker
-                        key={spot.id}
-                        position={{ lat: spot.lat, lng: spot.lng }}
-                        icon={{
-                            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' // Blue dot icon
-                        }}
-                    />
-                ))}
-                {/* Red marker for user location */}
-                {userLocation && (
-                    <Marker
-                        position={userLocation}
-                        icon={{
-                            url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' // Red dot icon
-                        }}
-                    />
-                )}
-            </GoogleMap>
-        </LoadScript>
+        <>
+            <LoadScript googleMapsApiKey="AIzaSyBAM7E8FJwP5mvq5o5Pk2vWxzPQzm2BTb4">
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={userLocation || center}
+                    zoom={15}
+                >
+                    {spots.map((spot) => (
+                        <Marker
+                            key={spot.id}
+                            position={{ lat: spot.lat, lng: spot.lng }}
+                            onClick={() => handleMarkerClick(spot.id)}
+                            onMouseOver={() => setHoveredSpotId(spot.id)}
+                            onMouseOut={() => setHoveredSpotId(null)}
+                            icon={{
+                                url: highlightedSpotId === spot.id
+                                    ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                                    : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                                scaledSize: (hoveredSpotId === spot.id || highlightedSpotId === spot.id)
+                                    ? new window.google.maps.Size(35, 35)
+                                    : new window.google.maps.Size(25, 25)
+                            }}
+                        />
+                    ))}
+
+                    {userLocation && (
+                        <Marker
+                            position={userLocation}
+                            icon={{ url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' }}
+                        />
+                    )}
+                </GoogleMap>
+            </LoadScript>
+        </>
     );
 };
 

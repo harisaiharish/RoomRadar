@@ -1,19 +1,21 @@
 // src/components/SidebarContainer.js
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import PrimarySidebar from './PrimarySidebar';
 import DetailedSidebar from './DetailedSidebar';
 
-const SidebarContainer = ({ spots, onSelectSpot, highlightedSpotId, onCloseDetailView }) => {
-    const [selectedSpot, setSelectedSpot] = useState(null);
+const SidebarContainer = ({ spots, highlightedSpotId, setHighlightedSpotId }) => {
+    const selectedSpot = spots.find((spot) => spot.id === highlightedSpotId);
+
+    useEffect(() => {
+        console.log("SidebarContainer received highlightedSpotId:", highlightedSpotId);
+    }, [highlightedSpotId]);
 
     const handleSpotClick = (spot) => {
-        setSelectedSpot(spot);
-        onSelectSpot(spot.id); // Highlight the marker
+        setHighlightedSpotId(spot.id); // Sync with MapComponent
     };
 
     const handleCloseDetailView = () => {
-        setSelectedSpot(null);
-        onCloseDetailView(); // Unhighlight the marker
+        setHighlightedSpotId(null); // Reset when closing the detailed view
     };
 
     return (
@@ -21,7 +23,11 @@ const SidebarContainer = ({ spots, onSelectSpot, highlightedSpotId, onCloseDetai
             {selectedSpot ? (
                 <DetailedSidebar spot={selectedSpot} onClose={handleCloseDetailView} />
             ) : (
-                <PrimarySidebar spots={spots} onSpotClick={handleSpotClick} highlightedSpotId={highlightedSpotId} />
+                <PrimarySidebar
+                    spots={spots}
+                    onSpotClick={handleSpotClick}
+                    highlightedSpotId={highlightedSpotId}
+                />
             )}
         </div>
     );

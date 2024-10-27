@@ -50,5 +50,4 @@ const PrimarySidebar = ({ spots, onSpotClick, highlightedSpotId }) => {
 		</div>
 	);
 };
-
 export default PrimarySidebar;
