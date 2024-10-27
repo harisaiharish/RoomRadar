@@ -1,23 +1,20 @@
 // src/components/MapComponent.js
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import spots from './MarkerInfo.json'; // Import the data file
-import SidebarContainer from './SidebarContainer'; // Import the sidebar component
+import spots from './MarkerInfo.json';
 
 const containerStyle = {
     width: '100%',
     height: '500px'
 };
 
-// Default center location
 const center = {
     lat: 40.42813,
     lng: -86.9212
 };
 
-const MapComponent = () => {
+const MapComponent = ({ highlightedSpotId, setHighlightedSpotId }) => {
     const [userLocation, setUserLocation] = useState(null);
-    const [highlightedSpotId, setHighlightedSpotId] = useState(null);
     const [hoveredSpotId, setHoveredSpotId] = useState(null);
 
     useEffect(() => {
@@ -33,13 +30,7 @@ const MapComponent = () => {
     }, []);
 
     const handleMarkerClick = (spotId) => {
-        console.log("Marker clicked:", spotId); // Log the clicked marker ID
-        setHighlightedSpotId((prevId) => (prevId === spotId ? null : spotId));
-        // setHighlightedSpotId(spotId);
-    };
-
-    const handleSidebarClose = () => {
-        setHighlightedSpotId(null); // Reset marker icon when sidebar is closed
+        setHighlightedSpotId((prevId) => (prevId === spotId ? null : spotId)); // Sync with App.js
     };
 
     return (
@@ -50,7 +41,6 @@ const MapComponent = () => {
                     center={userLocation || center}
                     zoom={15}
                 >
-                    {/* Map markers from MarkerInfo.json */}
                     {spots.map((spot) => (
                         <Marker
                             key={spot.id}
@@ -60,34 +50,23 @@ const MapComponent = () => {
                             onMouseOut={() => setHoveredSpotId(null)}
                             icon={{
                                 url: highlightedSpotId === spot.id
-                                    ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png' // Green when selected
-                                    : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png', // Blue by default
+                                    ? 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                                    : 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
                                 scaledSize: (hoveredSpotId === spot.id || highlightedSpotId === spot.id)
-                                    ? new window.google.maps.Size(35, 35) // Grow on hover or selected
-                                    : new window.google.maps.Size(25, 25) // Default size
+                                    ? new window.google.maps.Size(35, 35)
+                                    : new window.google.maps.Size(25, 25)
                             }}
                         />
                     ))}
 
-                    {/* Red marker for user location */}
                     {userLocation && (
                         <Marker
                             position={userLocation}
-                            icon={{
-                                url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                            }}
+                            icon={{ url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' }}
                         />
                     )}
                 </GoogleMap>
             </LoadScript>
-
-            {/* Sidebar Container for the primary and detailed sidebars */}
-            <SidebarContainer
-                spots={spots}
-                selectedSpotId={highlightedSpotId}
-                onSelectSpot={handleMarkerClick}
-                onCloseDetailView={handleSidebarClose}
-            />
         </>
     );
 };
