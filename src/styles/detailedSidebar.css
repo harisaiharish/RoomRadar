@@ -114,3 +114,12 @@
 	transform: scale(1.03);
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Image styling */
+.spot-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1.5em;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

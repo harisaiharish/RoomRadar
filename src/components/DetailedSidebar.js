@@ -14,8 +14,6 @@ const DetailedSidebar = ({ spot, onClose }) => {
 					lng: position.coords.longitude,
 				};
 				setUserLocation(location);
-				// Log the user's location
-				console.log("User Location:", location.lat, location.lng);
 			},
 			() => alert("Location access denied.")
 		);
@@ -32,6 +30,11 @@ const DetailedSidebar = ({ spot, onClose }) => {
 			</button>
 			<h2>{spot.title}</h2>
 			<p>{spot.description}</p>
+
+			{/* New image element */}
+			{spot.imgsrc && (
+				<img src={spot.imgsrc} alt={spot.title} className="spot-image" />
+			)}
 			{spot.bookingLink ? (
 				<div className="button-container">
 					<a href={spot.bookingLink} target="_blank" rel="noopener noreferrer">
@@ -41,7 +44,6 @@ const DetailedSidebar = ({ spot, onClose }) => {
 			) : (
 				<p className="warning">{spot.warning}</p>
 			)}
-
 			{/* New button to Google Maps - displays regardless of booking link */}
 			{userLocation && (
 				<a
